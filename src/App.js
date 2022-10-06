@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
+  // const [count, setCount] = useState(0);
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.count);
+  const increse = () => {
+    //setCount(count + 1);
+    dispatch({ type: "INCREASE" });
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h2>{count}</h2>
+      <button onClick={increse}>증가</button>
     </div>
   );
 }
